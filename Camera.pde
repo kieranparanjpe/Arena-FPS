@@ -60,8 +60,8 @@ public class Camera extends Object
    
     if(!Collide())
     {
-      transform.position.x += transform.velocity.x * 20;
-      transform.position.z += transform.velocity.z * 20;
+      transform.position.x += transform.velocity.x * 40;
+      transform.position.z += transform.velocity.z * 40;
     }
    
     transform.rotation.y += ((mouseX - pmouseX) < width / 2 && (mouseX - pmouseX) > -width / 2) ? (mouseX - pmouseX) * 0.01 : 0;

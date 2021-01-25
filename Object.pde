@@ -19,9 +19,7 @@ public abstract class Object
   }
   
   protected boolean Collide()
-  {
-    println(objects.size());
-    
+  {    
     PVector velRight = transform.velocity.copy().normalize();
     
     float angle = atan(velRight.z / velRight.x);

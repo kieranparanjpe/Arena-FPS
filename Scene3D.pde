@@ -8,6 +8,7 @@ ArrayList<Object> objects = new ArrayList<Object>();
 PImage map;
 PImage wood;
 PImage stone;
+PImage face;
 int gridSize = 300;
 
 final color ignore = #FFFFFF;
@@ -16,6 +17,8 @@ final color woodColor = #b5651d;
 
 PGraphics world;
 PGraphics UI;
+
+public float aangle;
 
 public void setup()
 {
@@ -26,8 +29,11 @@ public void setup()
   map = loadImage("map.png");
   wood = loadImage("oak.png");
   stone = loadImage("stone.png");
+  face = loadImage("face.jpg");
+  
   
   objects.add(new Camera());
+  objects.add(new Enemy(new PImage[]{wood, wood, face, wood, wood, wood}, new Transform(objects.get(0).transform.position.copy()), objects.get(0).transform.position));
   
   CreateScene();
 }
@@ -44,6 +50,12 @@ public void draw()
   for(int i = 0; i < objects.size(); i++)
   {
      objects.get(i).Draw(); 
+  }
+  
+  if(frameCount % 60 == 0)
+  {
+    objects.add(new Enemy(new PImage[]{wood, wood, face, wood, wood, wood}, 
+    new Transform(new PVector(random(-1000, 9000), height, random(-1000, 9000))), objects.get(0).transform.position));
   }
   world.endDraw();
   
