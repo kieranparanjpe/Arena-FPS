@@ -1,10 +1,10 @@
 public class Cube extends Object
 {
-  private color colour;
+  protected color colour;
   
   public Cube(color c)
   {
-     super();
+    super();
     colour = c;
   }
   
@@ -17,19 +17,19 @@ public class Cube extends Object
   @Override
   public void Draw()
   {
-    pushMatrix();
+    world.pushMatrix();
   
-    translate(transform.position.x, transform.position.y, transform.position.z);
-    rotateX(transform.rotation.x);
-    rotateY(transform.rotation.y);
-    rotateZ(transform.rotation.z);
+    world.translate(transform.position.x, transform.position.y, transform.position.z);
+    world.rotateX(transform.rotation.x);
+    world.rotateY(transform.rotation.y);
+    world.rotateZ(transform.rotation.z);
     
-    stroke(8);
-    fill(colour);
+    world.stroke(8);
+    world.fill(colour);
   
-    box(transform.scale.x, transform.scale.y, transform.scale.z);
+    world.box(transform.scale.x, transform.scale.y, transform.scale.z);
     
-    popMatrix();
+    world.popMatrix();
   }
   
 }
@@ -65,82 +65,82 @@ public class TexturedCube extends Object
   @Override
   public void Draw()
   {
-      pushMatrix();
+    world.pushMatrix();
   
-  translate(transform.position.x, transform.position.y, transform.position.z);
-  rotateX(transform.rotation.x);
-  rotateY(transform.rotation.y);
-  rotateZ(transform.rotation.z);
+  world.translate(transform.position.x, transform.position.y, transform.position.z);
+  world.rotateX(transform.rotation.x);
+  world.rotateY(transform.rotation.y);
+  world.rotateZ(transform.rotation.z);
   
-  scale(transform.scale.x);
-  noStroke();
+  world.scale(transform.scale.x);
+  world.noStroke();
  
-  beginShape(QUADS);
+  world.beginShape(QUADS);
   //f
   
-  texture(textures[0]);
-  vertex(0, 0, 1, 0, 0);
-  vertex(1, 0, 1, 1, 0);
-  vertex(1, 1, 1, 1, 1);
-  vertex(0, 1, 1, 0, 1);
-    endShape();
+  world.texture(textures[0]);
+  world.vertex(0, 0, 1, 0, 0);
+  world.vertex(1, 0, 1, 1, 0);
+  world.vertex(1, 1, 1, 1, 1);
+  world.vertex(0, 1, 1, 0, 1);
+   world.endShape();
 
   //b
-    beginShape(QUADS);
+    world.beginShape(QUADS);
 
-    texture(textures[1]);
-  vertex(0, 0, 0, 0, 0);
-  vertex(1, 0, 0, 1, 0);
-  vertex(1, 1, 0, 1, 1);
-  vertex(0, 1, 0, 0, 1);
-    endShape();
+    world.texture(textures[1]);
+  world.vertex(0, 0, 0, 0, 0);
+  world.vertex(1, 0, 0, 1, 0);
+  world.vertex(1, 1, 0, 1, 1);
+  world.vertex(0, 1, 0, 0, 1);
+    world.endShape();
 
   //l
-    beginShape(QUADS);
+    world.beginShape(QUADS);
 
-    texture(textures[2]);
+    world.texture(textures[2]);
 
-  vertex(0, 0, 0, 0, 0);
-  vertex(0, 0, 1, 1, 0);
-  vertex(0, 1, 1, 1, 1);
-  vertex(0, 1, 0, 0, 1);
-    endShape();
+  world.vertex(0, 0, 0, 0, 0);
+  world.vertex(0, 0, 1, 1, 0);
+  world.vertex(0, 1, 1, 1, 1);
+  world.vertex(0, 1, 0, 0, 1);
+    world.endShape();
 
   //r
-    beginShape(QUADS);
+    world.beginShape(QUADS);
 
-    texture(textures[3]);
+    world.texture(textures[3]);
 
-  vertex(1, 0, 0, 0, 0);
-  vertex(1, 0, 1, 1, 0);
-  vertex(1, 1, 1, 1, 1);
-  vertex(1, 1, 0, 0, 1);
-    endShape();
+  world.vertex(1, 0, 0, 0, 0);
+  world.vertex(1, 0, 1, 1, 0);
+  world.vertex(1, 1, 1, 1, 1);
+ world. vertex(1, 1, 0, 0, 1);
+    world.endShape();
 
   //t
-    beginShape(QUADS);
+    world.beginShape(QUADS);
 
-    texture(textures[4]);
+    world.texture(textures[4]);
 
-  vertex(0, 0, 0, 0, 0);
-  vertex(1, 0, 0, 1, 0);
-  vertex(1, 0, 1, 1, 1);
-  vertex(0, 0, 1, 0, 1);
-    endShape();
+  world.vertex(0, 0, 0, 0, 0);
+  world.vertex(1, 0, 0, 1, 0);
+  world.vertex(1, 0, 1, 1, 1);
+  world.vertex(0, 0, 1, 0, 1);
+    world.endShape();
 
   //b
-    beginShape(QUADS);
+    world.beginShape(QUADS);
 
-    texture(textures[5]);
+    world.texture(textures[5]);
 
-  vertex(0, 1, 0, 0, 0);
-  vertex(1, 1, 0, 1, 0);
-  vertex(1, 1, 1, 1, 1);
-  vertex(0, 1, 1, 0, 1);
+  world.vertex(0, 1, 0, 0, 0);
+  world.vertex(1, 1, 0, 1, 0);
+  world.vertex(1, 1, 1, 1, 1);
+  world.vertex(0, 1, 1, 0, 1);
   
-  endShape();
+  world.endShape();
   
   
-  popMatrix();
+  world.popMatrix();
   }  
 }

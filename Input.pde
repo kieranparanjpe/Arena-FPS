@@ -1,4 +1,4 @@
-public boolean w, a, s, d, q, click, e;
+public boolean w, a, s, d, space, click, e;
 
 void keyPressed()
 {
@@ -20,7 +20,7 @@ void keyPressed()
   }
   else if(key == ' ')
   {
-    q = true;
+    space = true;
   }
   else if(key == 'E' || key == 'e')
   {
@@ -48,7 +48,7 @@ void keyReleased()
   }
   else if(key == ' ')
   {
-    q = false;
+    space = false;
   }
   else if(key == 'E' || key == 'e')
   {

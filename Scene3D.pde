@@ -1,7 +1,7 @@
 
 import java.awt.*;
 
-Camera camera = new Camera();
+//Camera camera = new Camera();
 
 ArrayList<Object> objects = new ArrayList<Object>();
 
@@ -14,62 +14,48 @@ final color ignore = #FFFFFF;
 final color stoneColor = #808080;
 final color woodColor = #b5651d;
 
+PGraphics world;
+PGraphics UI;
+
 public void setup()
 {
-  size(displayWidth, displayHeight, P3D);
+  world = createGraphics(width, height, P3D);
+  UI = createGraphics(width, height, P2D);
+
+  size(displayWidth, displayHeight, P2D);
   map = loadImage("map.png");
   wood = loadImage("oak.png");
   stone = loadImage("stone.png");
-    
-  textureMode(NORMAL);
   
-  objects.add(new Cube(color(255, 0, 0)));
+  objects.add(new Camera());
   
   CreateScene();
 }
 
 public void draw()
 {
-  background(0);
-  pointLight(255, 255, 255, camera.posx, camera.posy, camera.posz);
+  world.beginDraw();
+  world.textureMode(NORMAL);
 
-  camera.Draw();
+  world.background(0);
+
+  //camera.Draw();
  
-  for(Object o : objects)
+  for(int i = 0; i < objects.size(); i++)
   {
-     o.Draw(); 
+     objects.get(i).Draw(); 
   }
+  world.endDraw();
   
-  camera.move = !Collide();
+  image(world, 0, 0);
   
-}
-
-public boolean Collide()
-{
-  println(objects.size());
+  UI.beginDraw();
+  UI.clear();
+  CrossHair();
+  MiniMap();
+  UI.endDraw();
   
-  PVector velRight = camera.mov.copy().normalize();
-  
-  float angle = atan(velRight.z / velRight.x);
-  angle += radians(90);
-  
-  velRight.x = cos(angle);
-  velRight.z = sin(angle);
-  
-
-  PVector posDir = camera.mov.copy().setMag(300).add(new PVector(camera.posx, camera.posy, camera.posz));
-  posDir.add(new PVector(2000, 2000, 2000));
-  posDir.div(gridSize);
-  
-  PVector posDirA = camera.mov.copy().setMag(300).add(new PVector(camera.posx, camera.posy, camera.posz).add(velRight.copy().setMag(120)));
-  posDirA.add(new PVector(2000, 2000, 2000));
-  posDirA.div(gridSize);
-  
-  PVector posDirB = camera.mov.copy().setMag(300).add(new PVector(camera.posx, camera.posy, camera.posz).add(velRight.copy().setMag(120).mult(-1)));
-  posDirB.add(new PVector(2000, 2000, 2000));
-  posDirB.div(gridSize);
-
-  return map.get((int)posDir.x, (int)posDir.z) != ignore || map.get((int)posDirA.x, (int)posDirA.z) != ignore || map.get((int)posDirB.x, (int)posDirB.z) != ignore;
+  image(UI, 0, 0);
 }
 
 public void CreateScene()
@@ -114,6 +100,10 @@ public class Transform
    public PVector rotation = new PVector();
    public PVector scale = new PVector(100, 100, 100);
    
+   public PVector velocity = new PVector();
+   public PVector forward = new PVector();
+   public PVector right = new PVector();
+
    public Transform(PVector pos, PVector rot, PVector scl)
    {
      position = pos;
