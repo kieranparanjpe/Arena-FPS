@@ -79,20 +79,20 @@ public class TexturedCube extends Object
   //f
   
   world.texture(textures[0]);
-  world.vertex(0, 0, 1, 0, 0);
-  world.vertex(1, 0, 1, 1, 0);
-  world.vertex(1, 1, 1, 1, 1);
-  world.vertex(0, 1, 1, 0, 1);
+  world.vertex(-0.5, -0.5, 0.5, 0, 0);
+  world.vertex(0.5, -0.5, 0.5, 1, 0);
+  world.vertex(0.5, 0.5, 0.5, 1, 1);
+  world.vertex(-0.5, 0.5, 0.5, 0, 1);
    world.endShape();
 
   //b
     world.beginShape(QUADS);
 
     world.texture(textures[1]);
-  world.vertex(0, 0, 0, 0, 0);
-  world.vertex(1, 0, 0, 1, 0);
-  world.vertex(1, 1, 0, 1, 1);
-  world.vertex(0, 1, 0, 0, 1);
+  world.vertex(-0.5, -0.5, -0.5, 0, 0);
+  world.vertex(0.5, -0.5, -0.5, 1, 0);
+  world.vertex(0.5, 0.5, -0.5, 1, 1);
+  world.vertex(-0.5, 0.5, -0.5, 0, 1);
     world.endShape();
 
   //l
@@ -100,10 +100,10 @@ public class TexturedCube extends Object
 
     world.texture(textures[2]);
 
-  world.vertex(0, 0, 0, 0, 0);
-  world.vertex(0, 0, 1, 1, 0);
-  world.vertex(0, 1, 1, 1, 1);
-  world.vertex(0, 1, 0, 0, 1);
+  world.vertex(-0.5, -0.5, -0.5, 0, 0);
+  world.vertex(-0.5, -0.5, 0.5, 1, 0);
+  world.vertex(-0.5, 0.5, 0.5, 1, 1);
+  world.vertex(-0.5, 0.5, -0.5, 0, 1);
     world.endShape();
 
   //r
@@ -111,10 +111,10 @@ public class TexturedCube extends Object
 
     world.texture(textures[3]);
 
-  world.vertex(1, 0, 0, 0, 0);
-  world.vertex(1, 0, 1, 1, 0);
-  world.vertex(1, 1, 1, 1, 1);
- world. vertex(1, 1, 0, 0, 1);
+  world.vertex(0.5, -0.5, -0.5, 0, 0);
+  world.vertex(0.5, -0.5, 0.5, 1, 0);
+  world.vertex(0.5, 0.5, 0.5, 1, 1);
+ world. vertex(0.5, 0.5, -0.5, 0, 1);
     world.endShape();
 
   //t
@@ -122,10 +122,10 @@ public class TexturedCube extends Object
 
     world.texture(textures[4]);
 
-  world.vertex(0, 0, 0, 0, 0);
-  world.vertex(1, 0, 0, 1, 0);
-  world.vertex(1, 0, 1, 1, 1);
-  world.vertex(0, 0, 1, 0, 1);
+  world.vertex(-0.5, -0.5, -0.5, 0, 0);
+  world.vertex(0.5, -0.5, -0.5, 1, 0);
+  world.vertex(0.5, -0.5, 0.5, 1, 1);
+  world.vertex(-0.5, -0.5, 0.5, 0, 1);
     world.endShape();
 
   //b
@@ -133,10 +133,10 @@ public class TexturedCube extends Object
 
     world.texture(textures[5]);
 
-  world.vertex(0, 1, 0, 0, 0);
-  world.vertex(1, 1, 0, 1, 0);
-  world.vertex(1, 1, 1, 1, 1);
-  world.vertex(0, 1, 1, 0, 1);
+  world.vertex(-0.5, 0.5, -0.5, 0, 0);
+  world.vertex(0.5, 0.5, -0.5, 1, 0);
+  world.vertex(0.5, 0.5, 0.5, 1, 1);
+  world.vertex(-0.5, 0.5, 0.5, 0, 1);
   
   world.endShape();
   

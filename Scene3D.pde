@@ -1,9 +1,11 @@
 
 import java.awt.*;
 
-//Camera camera = new Camera();
-
 ArrayList<Object> objects = new ArrayList<Object>();
+Button menu;
+Button pause;
+Button gameOver;
+
 
 PImage map;
 PImage wood;
@@ -20,6 +22,8 @@ PGraphics UI;
 
 public float aangle;
 
+public Mode mode;
+
 public void setup()
 {
   world = createGraphics(width, height, P3D);
@@ -31,6 +35,20 @@ public void setup()
   stone = loadImage("stone.png");
   face = loadImage("face.jpg");
   
+  rectMode(CENTER);
+  textAlign(CENTER);
+  
+  mode = Mode.MENU;
+  menu = new Button(new PVector(width / 2, height / 2), new PVector(500, 400), 100, 200, "Play", Mode.GAME);
+  pause = new Button(new PVector(width / 2, height / 2), new PVector(500, 400), 100, 200, "Resume", Mode.GAME);
+  gameOver = new Button(new PVector(width / 2, height / 2), new PVector(500, 400), 100, 200, "Replay", Mode.MENU);
+  
+  Reset();
+}
+
+public void Reset()
+{
+  objects = new ArrayList<Object>();
   
   objects.add(new Camera());
   objects.add(new Enemy(new PImage[]{wood, wood, face, wood, wood, wood}, new Transform(objects.get(0).transform.position.copy()), objects.get(0).transform.position));
@@ -40,34 +58,23 @@ public void setup()
 
 public void draw()
 {
-  world.beginDraw();
-  world.textureMode(NORMAL);
-
-  world.background(0);
-
-  //camera.Draw();
- 
-  for(int i = 0; i < objects.size(); i++)
+  if(mode == Mode.MENU)
   {
-     objects.get(i).Draw(); 
+    Menu(); 
+  }
+  if(mode == Mode.GAME)
+  {
+    Game(); 
+  }
+  if(mode == Mode.PAUSE)
+  {
+    Pause(); 
+  }
+  if(mode == Mode.GAMEOVER)
+  {
+    GameOver(); 
   }
   
-  if(frameCount % 60 == 0)
-  {
-    objects.add(new Enemy(new PImage[]{wood, wood, face, wood, wood, wood}, 
-    new Transform(new PVector(random(-1000, 9000), height, random(-1000, 9000))), objects.get(0).transform.position));
-  }
-  world.endDraw();
-  
-  image(world, 0, 0);
-  
-  UI.beginDraw();
-  UI.clear();
-  CrossHair();
-  MiniMap();
-  UI.endDraw();
-  
-  image(UI, 0, 0);
 }
 
 public void CreateScene()
@@ -80,23 +87,28 @@ public void CreateScene()
        switch(c)
        {
          case(ignore):
-           objects.add(new TexturedCube(wood, new Transform(new PVector(x * gridSize - 2000, height, y * gridSize - 2000), new PVector(), new PVector(gridSize, gridSize, gridSize))));
-           objects.add(new TexturedCube(wood, new Transform(new PVector(x * gridSize - 2000, height - (5 * gridSize), y * gridSize - 2000), new PVector(), new PVector(gridSize, gridSize, gridSize))));
+           objects.add(new TexturedCube(wood, new Transform(new PVector(x * gridSize - 2000 + 150, height, y * gridSize - 2000 + 150), new PVector(), 
+           new PVector(gridSize, gridSize, gridSize))));
+           objects.add(new TexturedCube(wood, new Transform(new PVector(x * gridSize - 2000 + 150, height - (5 * gridSize), y * gridSize - 2000 + 150), 
+           new PVector(), new PVector(gridSize, gridSize, gridSize))));
            break;
          case(woodColor):
            for(int i = 1; i < 5; i++)
            {
-             objects.add(new TexturedCube(wood, new Transform(new PVector(x * gridSize - 2000, height - (i * gridSize), y * gridSize - 2000), new PVector(), new PVector(gridSize, gridSize, gridSize))));
+             objects.add(new TexturedCube(wood, new Transform(new PVector(x * gridSize - 2000 + 150, height - (i * gridSize), y * gridSize - 2000 + 150), 
+             new PVector(), new PVector(gridSize, gridSize, gridSize))));
            }
            break;
          case(stoneColor):
            for(int i = 1; i < 5; i++)
            {
-             objects.add(new TexturedCube(stone, new Transform(new PVector(x * gridSize - 2000, height - (i * gridSize), y * gridSize - 2000), new PVector(), new PVector(gridSize, gridSize, gridSize))));
+             objects.add(new TexturedCube(stone, new Transform(new PVector(x * gridSize - 2000 + 150, height - (i * gridSize), y * gridSize - 2000 + 150), 
+             new PVector(), new PVector(gridSize, gridSize, gridSize))));
            }
            break;
          default:
-           objects.add(new Cube(c, new Transform(new PVector(x * gridSize - 2000, height / 2, y * gridSize - 2000), new PVector(), new PVector(gridSize, height, gridSize))));
+           objects.add(new Cube(c, new Transform(new PVector(x * gridSize - 2000 + 150, height / 2, y * gridSize - 2000 + 150), new PVector(), 
+           new PVector(gridSize, height, gridSize))));
            println("box");
            break;
        }
@@ -127,4 +139,12 @@ public class Transform
    {
      position = pos;
    }
+}
+
+public enum Mode
+{
+  MENU,
+  GAME,
+  PAUSE,
+  GAMEOVER
 }

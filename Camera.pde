@@ -6,6 +6,9 @@ public class Camera extends Object
   float camx;
   float camy;
   float camz;
+  
+  int lastShot = 0;
+  int fireRate = 500;
        
   public Camera()
   {
@@ -19,13 +22,14 @@ public class Camera extends Object
     camz = - (width / 2) - 1;
     
     transform.position.x = width / 2;
-    transform.position.y = 400;
+    transform.position.y = 200;
     
     transform.forward = new PVector(0, 0, 1);
     transform.right = new PVector(1, 0, 0);
     
     transform.scale = new PVector(240, 240, 300);
-  }
+    
+   }
   
   @Override
   public void Draw()
@@ -34,11 +38,13 @@ public class Camera extends Object
     Move();
     world.camera(transform.position.x, transform.position.y, transform.position.z, camx, camy, camz, 0, 1, 0);
     
-    if(space)
+    if(click && millis() >= lastShot + fireRate)
     {
        Transform t = new Transform(new PVector(camx, camy, camz).add(transform.forward.copy().setMag(100)));
        t.velocity = transform.forward.copy().setMag(100);
        objects.add(new Snowball(color(255), t));
+       
+       lastShot = millis();
     }
   }
   

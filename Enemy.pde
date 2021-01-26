@@ -34,6 +34,26 @@ public class Enemy extends TexturedCube
        
       transform.velocity = transform.forward.copy().setMag(-10);    
       transform.position.add(transform.velocity);
+      
+      if(PVector.dist(transform.position, target) < 250)
+      {
+        println("DIE");
+        Reset();
+        mode = Mode.GAMEOVER;
+      }
+      
+      for(Object o : objects)
+      {
+         if(o.getClass() == Snowball.class)
+         {
+            if(PVector.dist(transform.position, o.transform.position) < 300)
+            {
+               ((Snowball)o).Die();
+               objects.remove(this);
+               return;
+            }
+         }
+      }
     }
     else
     {
@@ -41,7 +61,7 @@ public class Enemy extends TexturedCube
         start = true;
         else
         {
-          transform.position.y--;
+          transform.position.y-=4;
         }
     }
   }

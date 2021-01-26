@@ -1,4 +1,4 @@
-public boolean w, a, s, d, space, click, e;
+public boolean w, a, s, d, space, click, p;
 
 void keyPressed()
 {
@@ -22,9 +22,9 @@ void keyPressed()
   {
     space = true;
   }
-  else if(key == 'E' || key == 'e')
+  else if(key == 'P' || key == 'p')
   {
-    e = true;
+    p = true;
   }
 }
 
@@ -50,8 +50,32 @@ void keyReleased()
   {
     space = false;
   }
-  else if(key == 'E' || key == 'e')
+  else if(key == 'P' || key == 'p')
   {
-    e = false;
+    p = false;
   }
+}
+
+void mousePressed()
+{
+  if(mode == Mode.MENU)
+    menu.Clicked();
+  if(mode == Mode.PAUSE)
+    pause.Clicked();
+  if(mode == Mode.GAMEOVER)
+    gameOver.Clicked();
+  
+  click = true;
+}
+
+void mouseReleased()
+{
+  if(mode == Mode.MENU)
+    menu.Released();
+  if(mode == Mode.PAUSE)
+    pause.Released();
+  if(mode == Mode.GAMEOVER)
+    gameOver.Released();
+  
+  click = false;
 }

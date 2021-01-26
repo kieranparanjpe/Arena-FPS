@@ -20,7 +20,7 @@ public class Particle extends Cube
   {
      super.Draw();
      
-     if(!Collide() && transform.position.y < height - transform.scale.y)
+     if(!Collide() && transform.position.y < height - transform.scale.y - gridSize / 2)
      {
        transform.position.add(transform.velocity); 
        transform.velocity.y++;
