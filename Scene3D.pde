@@ -6,7 +6,6 @@ Button menu;
 Button pause;
 Button gameOver;
 
-
 PImage map;
 PImage wood;
 PImage stone;
@@ -24,6 +23,8 @@ public float aangle;
 
 public Mode mode;
 
+float powerUpTime;
+
 public void setup()
 {
   world = createGraphics(width, height, P3D);
@@ -39,9 +40,9 @@ public void setup()
   textAlign(CENTER);
   
   mode = Mode.MENU;
-  menu = new Button(new PVector(width / 2, height / 2), new PVector(500, 400), 100, 200, "Play", Mode.GAME);
-  pause = new Button(new PVector(width / 2, height / 2), new PVector(500, 400), 100, 200, "Resume", Mode.GAME);
-  gameOver = new Button(new PVector(width / 2, height / 2), new PVector(500, 400), 100, 200, "Replay", Mode.MENU);
+  menu = new Button(new PVector(width / 2, height / 2), new PVector(500, 200), 100, 200, "Play", Mode.GAME);
+  pause = new Button(new PVector(width / 2, height / 2), new PVector(500, 200), 100, 200, "Resume", Mode.GAME);
+  gameOver = new Button(new PVector(width / 2, height / 2), new PVector(500, 200), 100, 200, "Replay", Mode.MENU);
   
   Reset();
 }

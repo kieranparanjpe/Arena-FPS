@@ -8,7 +8,9 @@ public class Camera extends Object
   float camz;
   
   int lastShot = 0;
-  int fireRate = 500;
+  int powerUpTime = 6000;
+  public int fireRate = 500;
+  public int lastPowerUp;
        
   public Camera()
   {
@@ -45,6 +47,11 @@ public class Camera extends Object
        objects.add(new Snowball(color(255), t));
        
        lastShot = millis();
+    }
+    if(millis() >= lastPowerUp + powerUpTime)
+    {
+      println("powerup");
+      fireRate = 500; 
     }
   }
   

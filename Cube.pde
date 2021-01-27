@@ -20,8 +20,8 @@ public class Cube extends Object
     world.pushMatrix();
   
     world.translate(transform.position.x, transform.position.y, transform.position.z);
-    world.rotateX(transform.rotation.x);
     world.rotateY(transform.rotation.y);
+    world.rotateX(transform.rotation.x);
     world.rotateZ(transform.rotation.z);
     
     world.stroke(8);
