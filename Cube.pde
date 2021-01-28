@@ -24,8 +24,9 @@ public class Cube extends Object
     world.rotateX(transform.rotation.x);
     world.rotateZ(transform.rotation.z);
     
-    world.stroke(8);
+   // world.stroke(8);
     world.fill(colour);
+    world.strokeWeight(0);
   
     world.box(transform.scale.x, transform.scale.y, transform.scale.z);
     

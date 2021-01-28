@@ -10,6 +10,7 @@ PImage map;
 PImage wood;
 PImage stone;
 PImage face;
+PImage white;
 int gridSize = 300;
 
 final color ignore = #FFFFFF;
@@ -35,6 +36,7 @@ public void setup()
   wood = loadImage("oak.png");
   stone = loadImage("stone.png");
   face = loadImage("face.jpg");
+  white = loadImage("white.jpg");
   
   rectMode(CENTER);
   textAlign(CENTER);
@@ -45,15 +47,14 @@ public void setup()
   gameOver = new Button(new PVector(width / 2, height / 2), new PVector(500, 200), 100, 200, "Replay", Mode.MENU);
   
   Reset();
+  GenerateTerrain();
 }
 
 public void Reset()
 {
   objects = new ArrayList<Object>();
   
-  objects.add(new Camera());
-  objects.add(new Enemy(new PImage[]{wood, wood, face, wood, wood, wood}, new Transform(objects.get(0).transform.position.copy()), objects.get(0).transform.position));
-  
+  objects.add(new Camera());  
   CreateScene();
 }
 
@@ -90,8 +91,8 @@ public void CreateScene()
          case(ignore):
            objects.add(new TexturedCube(wood, new Transform(new PVector(x * gridSize - 2000 + 150, height, y * gridSize - 2000 + 150), new PVector(), 
            new PVector(gridSize, gridSize, gridSize))));
-           objects.add(new TexturedCube(wood, new Transform(new PVector(x * gridSize - 2000 + 150, height - (5 * gridSize), y * gridSize - 2000 + 150), 
-           new PVector(), new PVector(gridSize, gridSize, gridSize))));
+           //objects.add(new TexturedCube(wood, new Transform(new PVector(x * gridSize - 2000 + 150, height - (5 * gridSize), y * gridSize - 2000 + 150), 
+           //new PVector(), new PVector(gridSize, gridSize, gridSize))));
            break;
          case(woodColor):
            for(int i = 1; i < 5; i++)

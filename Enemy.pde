@@ -32,8 +32,13 @@ public class Enemy extends TexturedCube
        
       transform.rotation.y = (angle);
        
-      transform.velocity = transform.forward.copy().setMag(-10);    
-      transform.position.add(transform.velocity);
+      transform.velocity.add(transform.forward.copy().setMag(-1));    
+      transform.velocity.y = 0;
+      
+      if(!Collide())
+        transform.position.add(transform.velocity);
+      else
+        transform.velocity = new PVector();
       
       if(PVector.dist(transform.position, target) < 250)
       {

@@ -12,7 +12,7 @@ public void Game()
 {
   world.beginDraw();
   world.textureMode(NORMAL);
-  world.background(0); 
+  world.background(173, 216, 230); 
   
   
   if(p)
@@ -26,12 +26,16 @@ public void Game()
   
   if(frameCount % 60 == 0)
   {
-    objects.add(new Enemy(new PImage[]{wood, wood, face, wood, wood, wood}, 
+    objects.add(new Enemy(new PImage[]{white, white, face, white, white, white}, 
     new Transform(new PVector(random(-1000, 9000), height, random(-1000, 9000))), objects.get(0).transform.position));
   }
   if(frameCount % 500 == 0)
   {
     objects.add(new PowerUp(color(0, 0, 255)));
+  }
+  if(frameCount % 2 == 0)
+  {
+      objects.add(new Rain());
   }
   powerUpTime += 0.1;
   world.endDraw();
