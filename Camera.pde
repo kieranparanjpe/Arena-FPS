@@ -50,7 +50,7 @@ public class Camera extends Object
     }
     if(millis() >= lastPowerUp + powerUpTime)
     {
-      println("powerup");
+      //println("powerup");
       fireRate = 500; 
     }
   }

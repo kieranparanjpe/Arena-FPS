@@ -54,11 +54,17 @@ public void Game()
 public void Pause()
 {
   background(0); 
+  fill(255);
+  textSize(200);
+  text("Paused", width / 2, 300);
   pause.Draw();
 }
 
 public void GameOver()
 {
   background(0); 
+  fill(255);
+  textSize(200);
+  text("Game Over", width / 2, 300);
   gameOver.Draw();
 }

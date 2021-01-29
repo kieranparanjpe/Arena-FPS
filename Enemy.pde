@@ -40,7 +40,9 @@ public class Enemy extends TexturedCube
       else
         transform.velocity = new PVector();
       
-      if(PVector.dist(transform.position, target) < 250)
+      PVector noy = target.copy();
+      noy.y = transform.position.y;
+      if(PVector.dist(transform.position, noy) < 250)
       {
         println("DIE");
         Reset();

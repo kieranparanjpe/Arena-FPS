@@ -47,7 +47,6 @@ public void setup()
   gameOver = new Button(new PVector(width / 2, height / 2), new PVector(500, 200), 100, 200, "Replay", Mode.MENU);
   
   Reset();
-  GenerateTerrain();
 }
 
 public void Reset()
@@ -111,7 +110,7 @@ public void CreateScene()
          default:
            objects.add(new Cube(c, new Transform(new PVector(x * gridSize - 2000 + 150, height / 2, y * gridSize - 2000 + 150), new PVector(), 
            new PVector(gridSize, height, gridSize))));
-           println("box");
+           //println("box");
            break;
        }
      }
