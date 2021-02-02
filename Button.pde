@@ -60,6 +60,10 @@ public class Button
     
     if(PointInRect(new PVector(mouseX, mouseY), position, scale))
     {
+      if(target == Mode.GAME && mode == Mode.MENU)
+      {
+        Reset();
+      }
       mode = target;
     }
   }

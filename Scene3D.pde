@@ -42,11 +42,11 @@ public void setup()
   textAlign(CENTER);
   
   mode = Mode.MENU;
-  menu = new Button(new PVector(width / 2, height / 2), new PVector(500, 200), 100, 200, "Play", Mode.GAME);
-  pause = new Button(new PVector(width / 2, height / 2), new PVector(500, 200), 100, 200, "Resume", Mode.GAME);
-  gameOver = new Button(new PVector(width / 2, height / 2), new PVector(500, 200), 100, 200, "Replay", Mode.MENU);
+  menu = new Button(new PVector(width / 2, height / 2), new PVector(500, 200), 255, 200, "Play", Mode.GAME);
+  pause = new Button(new PVector(width / 2, height / 2), new PVector(500, 200), 255, 200, "Resume", Mode.GAME);
+  gameOver = new Button(new PVector(width / 2, height / 2), new PVector(500, 200), 255, 200, "Replay", Mode.MENU);
   
-  Reset();
+  CreateScene();
 }
 
 public void Reset()

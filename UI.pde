@@ -12,6 +12,9 @@ private void MiniMap()
 {
   UI.image(map, 50, 50, 160, 160);
   
+  if(objects.size() <= 0)
+    return;
+  
   int x = (int)(objects.get(0).transform.position.x + 2000) / gridSize; 
   int y = (int)(objects.get(0).transform.position.z + 2000) / gridSize; 
 

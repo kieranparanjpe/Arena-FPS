@@ -7,7 +7,7 @@ public class PowerUp extends Cube
   {
     super(c);
     
-    transform.position = new PVector(random(-1000, 9000), height / 2, random(-1000, 9000));
+    transform.position = new PVector(random(-1000, 6000), height / 2, random(-1000, 6000));
     
     transform.rotation = new PVector(PI / 4, 0, 0);
   }

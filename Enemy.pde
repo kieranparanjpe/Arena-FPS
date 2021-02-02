@@ -31,7 +31,6 @@ public class Enemy extends TexturedCube
       aangle = angle;
        
       transform.rotation.y = (angle);
-       
       transform.velocity.add(transform.forward.copy().setMag(-1));    
       transform.velocity.y = 0;
       
@@ -45,7 +44,8 @@ public class Enemy extends TexturedCube
       if(PVector.dist(transform.position, noy) < 250)
       {
         println("DIE");
-        Reset();
+        objects = new ArrayList<Object>();
+        CreateScene();
         mode = Mode.GAMEOVER;
       }
       
