@@ -22,6 +22,8 @@ private void MiniMap()
   UI.fill(255);
   UI.text("X " + x, 50, 250);
   UI.text("Z " + y, 50, 280);
+  UI.text("Score: " + score, 50, 310);
+
   
   //UI.text("X " + objects.get(0).transform.position.x, 50, 250);
   //UI.text("Z " + objects.get(0).transform.position.z, 50, 280);

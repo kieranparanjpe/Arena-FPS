@@ -32,6 +32,10 @@ public void Game()
   world.textureMode(NORMAL);
   world.background(173, 216, 230); 
   
+  if((int)((millis() - lastMillis) / 1000) > score)
+  {
+    score++;
+  }
   
   if(p)
     mode = Mode.PAUSE;
@@ -92,5 +96,8 @@ public void GameOver()
   fill(255, 0 , 0);
   textSize(200);
   text("Game Over", width / 2, 300);
+  fill(255);
+  textSize(50);
+  text("Score: " + score, width / 2, 750);
   gameOver.Draw();
 }

@@ -26,6 +26,9 @@ public Mode mode;
 
 float powerUpTime;
 
+int score;
+int lastMillis;
+
 public void setup()
 {
   world = createGraphics(width, height, P3D);
@@ -51,6 +54,8 @@ public void setup()
 
 public void Reset()
 {
+  score = 0;
+  lastMillis = millis();
   objects = new ArrayList<Object>();
   
   objects.add(new Camera());  
