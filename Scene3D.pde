@@ -29,12 +29,17 @@ float powerUpTime;
 int score;
 int lastMillis;
 
+public void settings()
+{
+    size(displayWidth, displayHeight, P2D);
+
+}
+
 public void setup()
 {
   world = createGraphics(width, height, P3D);
   UI = createGraphics(width, height, P2D);
 
-  size(displayWidth, displayHeight, P2D);
   map = loadImage("map.png");
   wood = loadImage("oak.png");
   stone = loadImage("stone.png");
